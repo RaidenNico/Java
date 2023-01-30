@@ -1,0 +1,41 @@
+use daa1_s1;
+drop table UsuarioTinka;
+create table UsuarioTinka (
+    id int   not null,
+    Nombres varchar(32) not null,
+    Correo varchar(32) not null,
+    Puntos int
+    );
+
+insert into u
+
+select * from UsuarioTinka;
+
+DELIMITER $$
+Create PROCEDURE ObtenerUsuario()
+BEGIN
+    SELECT *  FROM UsuarioTinka ;
+END$$
+Drop PROCEDURE ObtenerUsuario;
+
+
+DELIMITER $$
+CREATE PROCEDURE EliminarUsuario( in idtinka int )
+BEGIN
+    delete from UsuarioTinka where id = idtinka;
+END$$
+DELIMITER $$
+CREATE PROCEDURE UpdateUsuario( in idtinka int , in nombretinka varchar(32),in correotinka varchar(32),in puntostinka int )
+BEGIN
+    update UsuarioTinka Set Nombres=nombretinka where  id=idtinka;
+     update UsuarioTinka Set Correo=correotinka where  id=idtinka;
+      update UsuarioTinka Set Puntos=puntostinka where  id=idtinka;
+      END$$
+  DELIMITER $$    
+CREATE PROCEDURE InsertarUsuario( in idtinka int , in nombretinka varchar(32),in correotinka varchar(32),in puntostinka int )
+BEGIN
+    Insert into UsuarioTinka (id,Nombres,Correo,Puntos) values (idtinka,nombretinka,correotinka,puntostinka);
+      END$$
+      
+drop PROCEDURE EliminarUsuario
+      
