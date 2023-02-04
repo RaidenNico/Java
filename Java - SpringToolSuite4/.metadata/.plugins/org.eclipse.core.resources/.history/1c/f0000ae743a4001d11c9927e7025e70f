@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}">
+</head>
+<body>
+<div class="card">
+		<div class="card-header">CALCULADOR IMC</div>
+		<div class="card-body">
+			<form th:action="@{/calculoimc}" method="post" th:object="${imcForm}">
+				<div class="mb-3">
+					<label for="txttalla" class="form-label">Talla:</label> <input
+						type="text" class="form-control" id="txttalla"
+						placeholder="Ingrese su talla" th:field="*{talla}">
+				</div>
+				<div class="mb-3">
+					<label for="txtpeso" class="form-label">Peso:</label> <input
+						type="text" class="form-control" id="txtpeso"
+						placeholder="Ingrese su peso" th:field="*{peso}">
+				</div>
+				<button type="submit" class="btn btn-secondary">CALCULAR</button>
+			</form>
+
+		</div>
+	</div>
+
+</body>
+</html>
