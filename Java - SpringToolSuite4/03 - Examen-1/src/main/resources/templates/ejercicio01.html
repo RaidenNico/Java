@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 01</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+  </head>
+  <body>
+    <h2 class="text-center py-4">Ejercicio 01</h2>
+    <div class="container-xxl">
+      <div class="row justify-content-center">
+        <div class="card col-sm-6 col-lg-5 col-xl-4">
+          <div class="card-header fw-bold">CALCULADOR MONTO</div>
+          <div class="card-body">
+            <form
+              th:action="@{/ejercicio01}"
+              method="post"
+              th:object="${ej1Form}"
+            >
+              <div class="mb-3">
+                <label for="txtprecio" class="form-label">Precio:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="txtprecio"
+                  placeholder="Ingrese la Cantidad"
+                  th:field="*{precio}"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="txtcantidad" class="form-label">Cantidad:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="txtcantidad"
+                  placeholder="Ingrese el Precio"
+                  th:field="*{cantidad}"
+                />
+              </div>
+              <button type="submit" class="btn btn-secondary fw-bold">
+                CALCULAR
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

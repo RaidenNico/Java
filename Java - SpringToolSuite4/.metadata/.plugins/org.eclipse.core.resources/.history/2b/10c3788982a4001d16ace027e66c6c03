@@ -1,0 +1,45 @@
+package pe.edu.idat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import pe.edu.idat.model.MntForm;
+
+@Controller
+public class MntController {
+
+	@GetMapping("/calculomnt")
+	public String calculoMonto(Model model) {
+		model.addAttribute("montoForm", new MntForm());
+		return "frmMonto";
+	}
+	
+	public String calculoMnt(
+			@ModelAttribute("mntForm") MntForm mntForm,
+			Model model) {
+		
+		double loanAmount = input.nextDouble();
+        double interestRate;
+        int numberOfPayments;
+        
+        if (loanAmount < 1000) {
+            numberOfPayments = 1;
+            interestRate = 0.12;
+        } else if (loanAmount >= 2000 && loanAmount <= 3000) {
+            numberOfPayments = 2;
+            interestRate = 0.12;
+        } else if (loanAmount > 5000) {
+            numberOfPayments = 3;
+            interestRate = 0.1;
+        } else {
+            numberOfPayments = 5;
+            interestRate = 0.1;
+        }
+        
+        double totalDebt = loanAmount * (1 + interestRate);
+        double paymentAmount = totalDebt / numberOfPayments;
+	}
+	
+}

@@ -1,0 +1,59 @@
+package pe.edu.idat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import pe.edu.idat.model.MntForm;
+
+@Controller
+public class MntController {
+
+	@GetMapping("/calculomnt")
+	public String calculoMonto(Model model) {
+		model.addAttribute("montoForm", new MntForm());
+		return "frmMonto";
+	}
+	
+	public String calculoMnt(
+			@ModelAttribute("mntForm") MntForm mntForm,
+			Model model) {
+		Double interes = 0.0;
+		Double montoInteres = 0.0;
+		Double montoTotal = 0.0;
+		Double montoCuota = 0.0;
+
+		if (monton < 1000) {
+		  numcuotas = 1.0;
+		  interes = (monton < 4000) ? 0.12 : 0.10;
+		  montoInteres = monton * interes;
+		  montoTotal = monton + montoInteres;
+		  montoCuota = montoTotal;
+		} else if (monton >= 2000 && monton <= 3000) {
+		  numcuotas = 2.0;
+		  interes = (monton < 4000) ? 0.12 : 0.10;
+		  montoInteres = monton * interes;
+		  montoTotal = monton + montoInteres;
+		  montoCuota = montoTotal / numcuotas;
+		} else if (monton > 5000) {
+		  numcuotas = 3.0;
+		  interes = 0.10;
+		  montoInteres = monton * interes;
+		  montoTotal = monton + montoInteres;
+		  montoCuota = montoTotal / numcuotas;
+		} else {
+		  numcuotas = 5.0;
+		  interes = 0.10;
+		  montoInteres = monton * interes;
+		  montoTotal = monton + montoInteres;
+		  montoCuota = montoTotal / numcuotas;
+		}
+
+		resultadoMnt = "El número de cuotas es: " + numcuotas + " y el monto de cada cuota es: " + montoCuota;
+
+		}
+		return "";
+	}
+	
+}

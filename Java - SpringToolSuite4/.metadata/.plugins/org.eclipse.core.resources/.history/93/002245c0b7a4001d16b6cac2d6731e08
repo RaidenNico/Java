@@ -1,0 +1,20 @@
+package pe.edu.idat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import pe.edu.idat.model.MntForm;
+
+@Controller
+public class MontonController {
+		
+	@GetMapping("/calculomonto")
+	public String calculomonto(Model model) {
+		model.addAttribute("montoForm", new MntForm());
+		return "frmMonto";
+	}
+	
+	
+	
+}

@@ -1,0 +1,55 @@
+package pe.edu.idat.controller;
+
+import java.util.Scanner;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import pe.edu.idat.model.MntForm;
+
+@Controller
+public class MntController {
+
+	@GetMapping("/calculomnt")
+	public String calculoMonto(Model model) {
+		model.addAttribute("montoForm", new MntForm());
+		return "frmMonto";
+	}
+	
+	public class Prestamo {
+		  public static void main(String[] args) {
+		    Scanner sc = new Scanner(System.in);
+		    double prestamo;
+		    int numCuotas;
+		    double interes;
+		    
+		    System.out.print("Ingrese el monto del préstamo: ");
+		    prestamo = sc.nextDouble();
+		    
+		    if (prestamo > 5000) {
+		      numCuotas = 3;
+		    } else if (prestamo >= 2000 && prestamo <= 3000) {
+		      numCuotas = 2;
+		    } else if (prestamo < 1000) {
+		      numCuotas = 1;
+		    } else {
+		      numCuotas = 5;
+		    }
+		    
+		    if (prestamo < 4000) {
+		      interes = 0.12;
+		    } else {
+		      interes = 0.10;
+		    }
+		    
+		    double deudaTotal = prestamo * (1 + interes);
+		    double cuota = deudaTotal / numCuotas;
+		    
+		    System.out.println("El número de cuotas es: " + numCuotas);
+		    System.out.println("El valor de cada cuota es: $" + cuota);
+		  }
+		}
+	
+}

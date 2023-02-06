@@ -1,0 +1,52 @@
+package pe.edu.idat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import pe.edu.idat.model.MntForm;
+
+@Controller
+public class MontonController {
+		
+	@GetMapping("/calculomonto")
+	public String calculomonto(Model model) {
+		model.addAttribute("montoForm", new MntForm());
+		return "frmMonto";
+	}
+	
+	
+	
+	@PostMapping("/calculomonto")
+	public String calculomonto(
+			@ModelAttribute MntForm montoForm, Model model)
+	{
+		int cuotas =0;
+		double interes =0.0;
+		double monto = montoForm.getMonto();
+		if (monto > 5000) {
+			cuotas = 3;
+		} else if (monto < 1000) {
+			cuotas = 1;
+		} else if (monto >= 2000 && monto <= 3000) {
+			cuotas = 2;
+		} else {
+			cuotas = 5;
+		}
+		
+		if (monto < 4000) {
+			interes = 0.12;
+		} else {
+			interes = 0.10;
+		}
+		double total = monto + (monto * interes);
+		double cuota = total / cuotas;
+		
+		model.addAttribute("cuotas", cuotas);
+		model.addAttribute("cuota", cuota);
+		return "frmMonton";
+	}
+}
+

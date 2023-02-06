@@ -1,0 +1,30 @@
+package pe.edu.idat.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import pe.edu.idat.model.MntForm;
+
+@Controller
+public class MntController {
+
+	@GetMapping("/calculomnt")
+	public String calculoMonto(Model model) {
+		model.addAttribute("montoForm", new MntForm());
+		return "frmMonto";
+	}
+	
+	public String calculoMnt(
+			@ModelAttribute("mntForm") MntForm mntForm,
+			Model model) {
+		Double Monto = mntForm.getMonto();
+		Double numCuotas = mntForm.getNcuotas();
+		String resultadoMnt = "";
+		if(valorMnt >= 5000)
+	
+		return "";
+	}
+	
+}

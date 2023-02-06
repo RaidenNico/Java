@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 02</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
+  </head>
+  <body>
+    <h2 class="text-center py-4">Ejercicio 02</h2>
+    <div class="container-xxl">
+      <div class="row justify-content-center">
+        <div class="card col-sm-6 col-lg-5 col-xl-4">
+          <div class="card-header fw-bold">ESQUEMA DE COBROS</div>
+          <div class="card-body">
+            <form
+              th:action="@{/ejercicio02}"
+              method="post"
+              th:object="${ej2Form}"
+            >
+              <div class="mb-3">
+                <label for="txtmonto" class="form-label">Precio:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="txtmonto"
+                  placeholder="Ingrese la Cantidad"
+                  th:field="*{monto}"
+                />
+              </div>
+              <button type="submit" class="btn btn-secondary fw-bold">
+                CALCULAR
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

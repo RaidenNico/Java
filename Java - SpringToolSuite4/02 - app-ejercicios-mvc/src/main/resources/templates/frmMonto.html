@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}">
+</head>
+<body>
+	<div class="card">
+		<div class="card-header">ESQUEMA DE COBROS</div>
+		<div class="card-body">
+			<form th:action="@{/calculomonto}" method="post" th:object="${montoForm}">
+				<div class="mb-3">
+				
+					<label for="txtmonto" class="form-label">MONTO:</label> <input
+						type="text" class="form-control" id="txtmonto"
+						placeholder="Ingrese su monto." th:field="*{monto}">
+				</div>
+
+				<button type="submit" class="btn btn-secondary">INGRESAR</button>
+			</form>
+
+		</div>
+	</div>
+
+</body>
+</html>
