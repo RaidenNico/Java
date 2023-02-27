@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<nav th:replace="layout::menu"></nav>
+	<div class="card">
+		<div class="card-header">RESUMEN DE PRODUCTOS SELECCIONADOS</div>
+		<div class="card-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">Código</th>
+						<th scope="col">Nombre del Producto</th>
+						<th scope="col">Cantidad</th>
+						<th scope="col">Precio</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="producto :${lstventaproducto}">
+						<td th:text="${producto.codProducto}"></td>
+						<td th:text="${producto.nomProducto}"></td>
+						<td th:text="${producto.cantidadTotal}"></td>
+						<td th:text="${producto.precioTotal}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

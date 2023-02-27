@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout::head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<nav th:replace="layout::menu"></nav>
+	<div class="card">
+		<div class="card-header">COMPRA DE PRODUCTOS</div>
+		<div class="card-body">
+			<form th:action="@{/Producto/registrarProducto}" method="post"
+				th:object="${ventaproductoform}">
+				<div class="mb-3">
+					<label for="cboproducto" class="form-label">Seleccione
+						Producto:</label> <select id="cboproducto" class="form-select"
+						th:field="*{codProducto}">
+						<option th:each="producto :${lstproductos}"
+							th:value="${producto.codProducto}"
+							th:text="${producto.nomProducto}"></option>
+					</select>
+				</div>
+				<div class="mb-3">
+					<label for="txtcantidad" class="form-label">Ingrese
+						Cantidad:</label> <input type="text" class="form-control" id="txtcantidad"
+						placeholder="Ingrese cantidad a comprar."
+						th:field="*{cantidadTotal}">
+				</div>
+				<button type="submit" class="btn btn-secondary">AGREGAR
+					PRODUCTO</button>
+					
+				<div th:if="${visualizar}" class="alert alert-success" role="alert">
+					<span th:text="${respuesta} ?: ''"></span></div>
+
+			</form>
+
+		</div>
+	</div>
+</body>
+</html>
